@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next';
 import { TOOLS, CATEGORIES, ToolCategory } from '@/lib/tools-registry';
+import { SITE_URL } from '@/lib/site-config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://khmertools.com';
+  const baseUrl = SITE_URL;
 
   const toolRoutes = TOOLS.map((tool) => ({
     url: `${baseUrl}/tools/${tool.slug}`,

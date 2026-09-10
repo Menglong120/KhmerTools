@@ -5,6 +5,7 @@ import { AppProvider } from '@/context/AppContext';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { SearchModal } from '@/components/common/SearchModal';
+import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from '@/lib/site-config';
 
 const kantumruy = Kantumruy_Pro({
   variable: '--font-kantumruy',
@@ -20,13 +21,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://khmertools.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'KhmerTools 🇰🇭 | Free, Fast & Private Online Tools for Cambodians & Developers',
+    default: SITE_TITLE,
     template: '%s | KhmerTools 🇰🇭',
   },
-  description:
-    'Free online tools platform for Cambodia and developers: Khmer number converter, Buddhist Era date converter, Khmer text utilities, age calculator, percentage calculator, loan calculator, JSON formatter, UUID generator, Base64, and JWT decoder.',
+  description: SITE_DESCRIPTION,
   keywords: [
     'Khmer tools',
     'Khmer number converter',
@@ -39,24 +39,27 @@ export const metadata: Metadata = {
     'Buddhist Era',
     'Cambodia tools',
     'Riel converter',
+    'QR code generator',
+    'Color converter',
   ],
   authors: [{ name: 'KhmerTools Community' }],
   creator: 'KhmerTools',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
     locale: 'km_KH',
     alternateLocale: 'en_US',
-    url: 'https://khmertools.com',
-    title: 'KhmerTools 🇰🇭 | Free Online Utilities',
-    description:
-      'Fast, simple, and 100% client-side online tools for Cambodian users and developers worldwide.',
-    siteName: 'KhmerTools',
+    url: SITE_URL,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    siteName: SITE_NAME,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'KhmerTools 🇰🇭 | Free Online Utilities',
-    description:
-      'Fast, simple, and 100% client-side online tools for Cambodian users and developers worldwide.',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
   icons: {
     icon: '/icon.svg',

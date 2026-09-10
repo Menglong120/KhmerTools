@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useApp } from '@/context/AppContext';
 import { TOOLS, CATEGORIES, ToolCategory } from '@/lib/tools-registry';
+import { SITE_URL } from '@/lib/site-config';
 import { ToolCard } from '@/components/common/ToolCard';
 import { ToolIcon } from '@/components/common/ToolIcon';
 import { AdSlot } from '@/components/layout/AdSlot';
@@ -28,8 +29,37 @@ export default function HomePage() {
       ? TOOLS
       : TOOLS.filter((tool) => tool.category === selectedFilter);
 
+  const homeJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: 'KhmerTools',
+        alternateName: ['KhmerTools 🇰🇭', 'ឧបករណ៍ខ្មែរ'],
+        description:
+          'Free, fast, and private client-side online tools for Cambodia and developers worldwide.',
+        inLanguage: ['km-KH', 'en-US'],
+      },
+      {
+        '@type': 'Organization',
+        '@id': `${SITE_URL}/#organization`,
+        name: 'KhmerTools',
+        url: SITE_URL,
+        logo: `${SITE_URL}/icon.svg`,
+      },
+    ],
+  };
+
   return (
     <div className="space-y-16 py-4 sm:py-8">
+      {/* Search Engine Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
+      />
+
       {/* Hero Section */}
       <section className="relative text-center max-w-4xl mx-auto space-y-6 pt-6 sm:pt-12">
         {/* Glow Background */}

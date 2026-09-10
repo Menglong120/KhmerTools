@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { TOOLS, getToolBySlug, CATEGORIES, ToolMeta } from '@/lib/tools-registry';
+import { SITE_URL } from '@/lib/site-config';
 import { Breadcrumb } from '@/components/layout/Breadcrumb';
 import { ToolRenderer } from '@/components/tools/ToolRenderer';
 import { ToolCard } from '@/components/common/ToolCard';
@@ -40,10 +41,13 @@ export async function generateMetadata({ params }: ToolPageProps): Promise<Metad
     title,
     description,
     keywords: [...tool.tags, tool.name.en, tool.name.km, 'KhmerTools', 'online utility'],
+    alternates: {
+      canonical: `/tools/${tool.slug}`,
+    },
     openGraph: {
       title: `${tool.name.en} 🇰🇭 | KhmerTools`,
       description: tool.shortDescription.en,
-      url: `https://khmertools.com/tools/${tool.slug}`,
+      url: `${SITE_URL}/tools/${tool.slug}`,
       type: 'article',
     },
     twitter: {
@@ -67,20 +71,67 @@ export default async function ToolPage({ params }: ToolPageProps) {
     (t) => t.category === tool.category && t.slug !== tool.slug
   ).slice(0, 3);
 
-  // Schema.org Structured Data
+  // Schema.org Structured Data with Rich Snippets (WebApplication, BreadcrumbList, FAQPage)
+  const schemaGraph: any[] = [
+    {
+      '@type': 'WebApplication',
+      '@id': `${SITE_URL}/tools/${tool.slug}#webapp`,
+      name: tool.name.en,
+      alternateName: tool.name.km,
+      description: tool.description.en,
+      url: `${SITE_URL}/tools/${tool.slug}`,
+      applicationCategory: 'UtilityApplication',
+      operatingSystem: 'All',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${SITE_URL}/tools/${tool.slug}#breadcrumb`,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: SITE_URL,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: categoryInfo.name.en,
+          item: `${SITE_URL}/category/${tool.category}`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: tool.name.en,
+          item: `${SITE_URL}/tools/${tool.slug}`,
+        },
+      ],
+    },
+  ];
+
+  if (tool.faqs && tool.faqs.length > 0) {
+    schemaGraph.push({
+      '@type': 'FAQPage',
+      '@id': `${SITE_URL}/tools/${tool.slug}#faq`,
+      mainEntity: tool.faqs.map((faq) => ({
+        '@type': 'Question',
+        name: `${faq.question.en} (${faq.question.km})`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `${faq.answer.en} ${faq.answer.km}`,
+        },
+      })),
+    });
+  }
+
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: tool.name.en,
-    alternateName: tool.name.km,
-    description: tool.description.en,
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'All',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
+    '@graph': schemaGraph,
   };
 
   return (

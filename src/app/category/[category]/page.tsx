@@ -2,6 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { CATEGORIES, ToolCategory, getToolsByCategory, TOOLS } from '@/lib/tools-registry';
+import { SITE_URL } from '@/lib/site-config';
 import { Breadcrumb } from '@/components/layout/Breadcrumb';
 import { ToolCard } from '@/components/common/ToolCard';
 import { ToolIcon } from '@/components/common/ToolIcon';
@@ -30,9 +31,13 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   return {
     title: `${cat.name.en} | ${cat.name.km}`,
     description: `${cat.description.en} ${cat.description.km}`,
+    alternates: {
+      canonical: `/category/${category}`,
+    },
     openGraph: {
       title: `${cat.name.en} | KhmerTools 🇰🇭`,
       description: cat.description.en,
+      url: `${SITE_URL}/category/${category}`,
     },
   };
 }
