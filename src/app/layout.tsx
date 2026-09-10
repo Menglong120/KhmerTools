@@ -5,7 +5,7 @@ import { AppProvider } from '@/context/AppContext';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { SearchModal } from '@/components/common/SearchModal';
-import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from '@/lib/site-config';
+import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION, ADSENSE_CLIENT_ID } from '@/lib/site-config';
 
 const kantumruy = Kantumruy_Pro({
   variable: '--font-kantumruy',
@@ -78,7 +78,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const adClientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
+  const adClientId = ADSENSE_CLIENT_ID;
 
   return (
     <html

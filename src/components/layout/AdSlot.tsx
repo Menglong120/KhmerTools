@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import { ADSENSE_CLIENT_ID } from '@/lib/site-config';
 
 interface AdSlotProps {
   slotId?: string;
@@ -13,7 +14,7 @@ export function AdSlot({
   format = 'auto',
   className = '',
 }: AdSlotProps) {
-  const adClientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
+  const adClientId = ADSENSE_CLIENT_ID;
 
   useEffect(() => {
     if (adClientId && typeof window !== 'undefined') {
