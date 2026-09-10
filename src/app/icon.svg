@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#032EA6" />
+      <stop offset="100%" stop-color="#021E70" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E00025" />
+      <stop offset="100%" stop-color="#BA001F" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Clip for smooth squircle icon shape -->
+  <clipPath id="squircle">
+    <rect x="0" y="0" width="512" height="512" rx="112" ry="112" />
+  </clipPath>
+
+  <g clip-path="url(#squircle)">
+    <!-- Top Blue Stripe (Cambodia Blue) -->
+    <rect x="0" y="0" width="512" height="128" fill="url(#blueGrad)" />
+
+    <!-- Center Red Stripe (Cambodia Red) -->
+    <rect x="0" y="128" width="512" height="256" fill="url(#redGrad)" />
+
+    <!-- Bottom Blue Stripe (Cambodia Blue) -->
+    <rect x="0" y="384" width="512" height="128" fill="url(#blueGrad)" />
+
+    <!-- Angkor Wat Stylized Temple Silhouette (White) -->
+    <g fill="#FFFFFF" filter="url(#shadow)">
+      <!-- Main base platform -->
+      <path d="M 120 338 L 392 338 L 380 324 L 132 324 Z" />
+      <!-- Second platform tier -->
+      <path d="M 144 324 L 368 324 L 360 308 L 152 308 Z" />
+      <!-- Third platform tier -->
+      <path d="M 166 308 L 346 308 L 340 294 L 172 294 Z" />
+
+      <!-- Center Grand Tower -->
+      <!-- Spire -->
+      <path d="M 256 166 L 251 190 L 261 190 Z" />
+      <!-- Top tier -->
+      <path d="M 245 190 L 267 190 L 269 214 L 243 214 Z" />
+      <!-- Mid tier -->
+      <path d="M 239 214 L 273 214 L 277 248 L 235 248 Z" />
+      <!-- Lower tier -->
+      <path d="M 231 248 L 281 248 L 285 294 L 227 294 Z" />
+
+      <!-- Left Tower -->
+      <!-- Spire -->
+      <path d="M 194 200 L 190 220 L 198 220 Z" />
+      <!-- Mid tier -->
+      <path d="M 185 220 L 203 220 L 206 250 L 182 250 Z" />
+      <!-- Lower tier -->
+      <path d="M 178 250 L 210 250 L 213 294 L 175 294 Z" />
+
+      <!-- Right Tower -->
+      <!-- Spire -->
+      <path d="M 318 200 L 314 220 L 322 220 Z" />
+      <!-- Mid tier -->
+      <path d="M 309 220 L 327 220 L 330 250 L 306 250 Z" />
+      <!-- Lower tier -->
+      <path d="M 302 250 L 334 250 L 337 294 L 299 294 Z" />
+
+      <!-- Outer Small Pinnacles -->
+      <path d="M 148 266 L 152 284 L 144 284 Z" />
+      <rect x="142" y="284" width="12" height="10" />
+
+      <path d="M 364 266 L 368 284 L 360 284 Z" />
+      <rect x="358" y="284" width="12" height="10" />
+    </g>
+
+    <!-- Subtle Border -->
+    <rect x="0" y="0" width="512" height="512" rx="112" ry="112" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="8" />
+  </g>
+</svg>
