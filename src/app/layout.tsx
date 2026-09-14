@@ -104,9 +104,8 @@ export default function RootLayout({
           rel="stylesheet"
         />
         {adClientId && (
-          <Script
-            id="google-adsense"
-            strategy="afterInteractive"
+          <script
+            async
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClientId}`}
             crossOrigin="anonymous"
           />
