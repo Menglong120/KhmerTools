@@ -2,9 +2,19 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { Breadcrumb } from '@/components/layout/Breadcrumb';
 
+import { SITE_URL } from '@/lib/site-config';
+
 export const metadata: Metadata = {
   title: 'Terms of Service | លក្ខខណ្ឌប្រើប្រាស់',
   description: 'Terms and conditions for utilizing the free online tools on KhmerTools.',
+  alternates: {
+    canonical: '/terms',
+  },
+  openGraph: {
+    title: 'Terms of Service | លក្ខខណ្ឌប្រើប្រាស់ - KhmerTools 🇰🇭',
+    description: 'Terms and conditions for utilizing the free online tools on KhmerTools.',
+    url: `${SITE_URL}/terms`,
+  },
 };
 
 export default function TermsPage() {
@@ -26,7 +36,7 @@ export default function TermsPage() {
             1. Acceptance of Terms
           </h2>
           <p>
-            By accessing and using KhmerTools (https://khmertools.com), you agree to comply with and be bound by these Terms of Service. If you do not agree, please discontinue using the website.
+            By accessing and using KhmerTools ({SITE_URL}), you agree to comply with and be bound by these Terms of Service. If you do not agree, please discontinue using the website.
           </p>
 
           <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100">

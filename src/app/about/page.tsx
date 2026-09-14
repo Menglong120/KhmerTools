@@ -3,9 +3,19 @@ import type { Metadata } from 'next';
 import { Breadcrumb } from '@/components/layout/Breadcrumb';
 import { ShieldCheck, Heart, Sparkles, Zap, Laptop, Target } from 'lucide-react';
 
+import { SITE_URL } from '@/lib/site-config';
+
 export const metadata: Metadata = {
   title: 'About Us | អំពីយើង',
   description: 'Learn about the mission, values, and client-side architecture of KhmerTools 🇰🇭.',
+  alternates: {
+    canonical: '/about',
+  },
+  openGraph: {
+    title: 'About Us | អំពីយើង - KhmerTools 🇰🇭',
+    description: 'Learn about the mission, values, and client-side architecture of KhmerTools 🇰🇭.',
+    url: `${SITE_URL}/about`,
+  },
 };
 
 export default function AboutPage() {

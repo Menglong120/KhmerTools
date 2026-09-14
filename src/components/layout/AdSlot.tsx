@@ -10,37 +10,31 @@ interface AdSlotProps {
 }
 
 export function AdSlot({
-  slotId = '1234567890',
+  slotId,
   format = 'auto',
   className = '',
 }: AdSlotProps) {
   const adClientId = ADSENSE_CLIENT_ID;
+  const isNumericSlot = Boolean(slotId && /^\d{8,12}$/.test(slotId));
 
   useEffect(() => {
-    if (adClientId && typeof window !== 'undefined') {
+    // Only trigger adsbygoogle push for valid numeric slot IDs to prevent TagError crashes
+    if (adClientId && isNumericSlot && typeof window !== 'undefined') {
       try {
         // @ts-expect-error Google AdSense adsbygoogle
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch (e) {
-        console.error('AdSense error: ', e);
+        if (process.env.NODE_ENV === 'development') {
+          console.debug('AdSense push notice: ', e);
+        }
       }
     }
-  }, [adClientId]);
+  }, [adClientId, isNumericSlot]);
 
-  if (!adClientId) {
-    // Elegant Placeholder with AdSense indication
-    return (
-      <div
-        className={`w-full my-6 p-4 rounded-xl border border-dashed border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/30 flex flex-col items-center justify-center text-center ${className}`}
-      >
-        <span className="text-[10px] uppercase tracking-wider font-semibold text-slate-400 dark:text-slate-500 mb-1">
-          Advertisement Space
-        </span>
-        <p className="text-xs text-slate-400 dark:text-slate-600">
-          Google AdSense Unit (Auto-activated when client ID is provided)
-        </p>
-      </div>
-    );
+  // When no numeric slot ID is specified (site in review or awaiting unit creation in AdSense dashboard),
+  // Auto Ads from the head script handles ad placement automatically without causing slot errors.
+  if (!adClientId || !isNumericSlot) {
+    return null;
   }
 
   return (

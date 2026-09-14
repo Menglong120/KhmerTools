@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Kantumruy_Pro, Inter } from 'next/font/google';
 import './globals.css';
+import Script from 'next/script';
 import { AppProvider } from '@/context/AppContext';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -46,8 +47,16 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'KhmerTools Community' }],
   creator: 'KhmerTools',
-  alternates: {
-    canonical: '/',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   openGraph: {
     type: 'website',
@@ -95,19 +104,23 @@ export default function RootLayout({
           rel="stylesheet"
         />
         {adClientId && (
-          <script
-            async
+          <Script
+            id="google-adsense"
+            strategy="afterInteractive"
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClientId}`}
             crossOrigin="anonymous"
           />
         )}
         {GA_ID && (
           <>
-            <script
-              async
+            <Script
+              id="google-gtag"
+              strategy="afterInteractive"
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
             />
-            <script
+            <Script
+              id="google-analytics-init"
+              strategy="afterInteractive"
               dangerouslySetInnerHTML={{
                 __html: `
                   window.dataLayer = window.dataLayer || [];

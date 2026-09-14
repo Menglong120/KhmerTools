@@ -3,9 +3,19 @@ import type { Metadata } from 'next';
 import { Breadcrumb } from '@/components/layout/Breadcrumb';
 import { ShieldCheck, Lock, EyeOff } from 'lucide-react';
 
+import { SITE_URL } from '@/lib/site-config';
+
 export const metadata: Metadata = {
   title: 'Privacy Policy | គោលការណ៍ឯកជនភាព',
   description: 'Learn how KhmerTools protects your privacy by processing data strictly inside your browser.',
+  alternates: {
+    canonical: '/privacy',
+  },
+  openGraph: {
+    title: 'Privacy Policy | គោលការណ៍ឯកជនភាព - KhmerTools 🇰🇭',
+    description: 'Learn how KhmerTools protects your privacy by processing data strictly inside your browser.',
+    url: `${SITE_URL}/privacy`,
+  },
 };
 
 export default function PrivacyPage() {
