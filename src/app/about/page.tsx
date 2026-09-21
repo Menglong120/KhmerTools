@@ -81,6 +81,30 @@ export default function AboutPage() {
             Unlike many online converters that transmit your private data (such as JSON payloads, tokens, documents, or personal figures) to third-party servers, KhmerTools is designed from the ground up as a <strong>100% frontend client-side web application</strong>. Your inputs are processed locally on your device and are never sent or stored on any server.
           </p>
         </div>
+
+        <hr className="border-slate-100 dark:border-slate-800" />
+
+        <div className="space-y-3">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+            <Laptop className="w-5 h-5 text-indigo-500" />
+            <span>Technical Standards & Open Architecture</span>
+          </h2>
+          <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            KhmerTools is engineered using modern Next.js 15, TypeScript, and standard Web Cryptography APIs. All linguistic utilities follow the Chuon Nath Khmer dictionary conventions, National Bank of Cambodia financial writing directives, and international standards including IETF RFC 8259 (JSON), RFC 4122 (UUID), and Unicode Standard 15.0 Khmer Block specifications.
+          </p>
+        </div>
+
+        <hr className="border-slate-100 dark:border-slate-800" />
+
+        <div className="space-y-3">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-amber-500" />
+            <span>Community & Editorial Standards</span>
+          </h2>
+          <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Our educational guides and tool documentations are authored and verified by developers and native Khmer linguistic contributors. We ensure every guide is fact-checked against historical epigraphy, official regulatory publications, and authoritative computer science specifications.
+          </p>
+        </div>
       </div>
     </div>
   );

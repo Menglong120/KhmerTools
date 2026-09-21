@@ -60,8 +60,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'km_KH',
-    alternateLocale: 'en_US',
+    locale: 'en_US',
+    alternateLocale: 'km_KH',
     url: SITE_URL,
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
@@ -73,9 +73,12 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
   },
   icons: {
-    icon: '/icon.svg',
-    shortcut: '/icon.svg',
-    apple: '/icon.svg',
+    icon: [
+      { url: '/images.png', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    shortcut: '/images.png',
+    apple: '/images.png',
   },
   verification: {
     google: '5f029db7ec44286a',
@@ -91,12 +94,14 @@ export default function RootLayout({
 
   return (
     <html
-      lang="km"
+      lang="en"
       className={`${kantumruy.variable} ${inter.variable} antialiased`}
       suppressHydrationWarning
     >
       <head>
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" sizes="any" />
+        <link rel="icon" href="/images.png" type="image/png" sizes="any" />
+        <link rel="shortcut icon" href="/images.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/images.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

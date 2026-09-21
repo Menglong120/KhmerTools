@@ -20,19 +20,22 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>('km');
+  const [locale, setLocaleState] = useState<Locale>('en');
   const [theme, setThemeState] = useState<Theme>('light');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Read saved locale
-    const savedLocale = localStorage.getItem('khmertools_locale') as Locale | null;
+    // Read saved locale using v2 key to reset stale pre-AdSense Khmer session defaults
+    const savedLocale = localStorage.getItem('khmertools_locale_v2') as Locale | null;
     if (savedLocale === 'en' || savedLocale === 'km') {
       setLocaleState(savedLocale);
+      document.documentElement.lang = savedLocale;
     } else {
-      // Default to Khmer
-      setLocaleState('km');
+      // Default to English for AdSense compliance and new sessions
+      setLocaleState('en');
+      localStorage.setItem('khmertools_locale_v2', 'en');
+      document.documentElement.lang = 'en';
     }
 
     // Read saved theme
@@ -69,7 +72,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const setLocale = (newLocale: Locale) => {
     setLocaleState(newLocale);
-    localStorage.setItem('khmertools_locale', newLocale);
+    localStorage.setItem('khmertools_locale_v2', newLocale);
     document.documentElement.lang = newLocale;
   };
 

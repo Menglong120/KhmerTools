@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useApp } from '@/context/AppContext';
 import { TOOLS, CATEGORIES, ToolCategory } from '@/lib/tools-registry';
+import { GUIDES } from '@/lib/guides-data';
 import { SITE_URL } from '@/lib/site-config';
 import { ToolCard } from '@/components/common/ToolCard';
 import { ToolIcon } from '@/components/common/ToolIcon';
@@ -15,6 +16,8 @@ import {
   ShieldCheck,
   Globe2,
   Flame,
+  BookOpen,
+  ArrowRight,
 } from 'lucide-react';
 
 export function HomePageClient() {
@@ -46,7 +49,7 @@ export function HomePageClient() {
         '@id': `${SITE_URL}/#organization`,
         name: 'KhmerTools',
         url: SITE_URL,
-        logo: `${SITE_URL}/icon.svg`,
+        logo: `${SITE_URL}/images.png`,
       },
     ],
   };
@@ -335,6 +338,62 @@ export function HomePageClient() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredTools.map((tool) => (
             <ToolCard key={tool.id} tool={tool} />
+          ))}
+        </div>
+      </section>
+
+      {/* Educational Knowledge Base & Guides Section */}
+      <section className="space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div className="space-y-1">
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
+              <BookOpen className="w-4 h-4" />
+              <span>{locale === 'km' ? 'ចំណេះដឹង & ការណែនាំ' : 'Knowledge & Reference Guides'}</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-100">
+              {locale === 'km' ? 'អត្ថបទណែនាំ និងចំណេះដឹងបច្ចេកវិទ្យា' : 'Educational Guides & Documentation'}
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              {locale === 'km'
+                ? 'ស្វែងយល់បន្ថែមអំពីប្រព័ន្ធលេខខ្មែរ ប្រាក់រៀល កាលបរិច្ឆេទពុទ្ធសករាជ និងសុវត្ថិភាពកុំព្យូទ័រ។'
+                : 'Deep-dive reference articles on Cambodian numeral systems, currency rules, and developer security.'}
+            </p>
+          </div>
+          <Link
+            href="/guides"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 transition-colors shrink-0"
+          >
+            <span>{locale === 'km' ? 'មើលអត្ថបទទាំងអស់' : 'Explore all guides'}</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {GUIDES.slice(0, 4).map((guide) => (
+            <Link
+              key={guide.slug}
+              href={`/guides/${guide.slug}`}
+              className="group p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-2xs hover:border-indigo-400/80 dark:hover:border-indigo-500/80 hover:shadow-md transition-all flex flex-col justify-between"
+            >
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-[11px] text-slate-400">
+                  <span className="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium">
+                    {guide.category === 'khmer' ? '🇰🇭 Culture' : '💻 Developer'}
+                  </span>
+                  <span>{guide.readTime}</span>
+                </div>
+                <h3 className="font-bold text-base text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  {guide.title.en}
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">
+                  {guide.summary.en}
+                </p>
+              </div>
+              <div className="pt-4 mt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-indigo-600 dark:text-indigo-400 font-semibold">
+                <span>{locale === 'km' ? 'អានលម្អិត' : 'Read Article'}</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
           ))}
         </div>
       </section>

@@ -18,9 +18,9 @@ export function Footer() {
             <div className="flex items-center gap-2.5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/icon.svg"
+                src="/images.png"
                 alt="KhmerTools Logo"
-                className="w-8 h-8 rounded-lg shadow-xs"
+                className="w-8 h-5 rounded-md object-cover shadow-xs"
               />
               <span className="text-xl font-bold bg-linear-to-r from-slate-900 to-indigo-700 dark:from-white dark:to-indigo-300 bg-clip-text text-transparent">
                 KhmerTools
@@ -121,6 +121,14 @@ export function Footer() {
                   className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                 >
                   {t.about}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/guides"
+                  className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                >
+                  {t.guides}
                 </Link>
               </li>
               <li>

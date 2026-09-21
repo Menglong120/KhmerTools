@@ -38,6 +38,9 @@ export const UI_STRINGS = {
     madeWithLove: 'Crafted with passion for Cambodia 🇰🇭 and the global community.',
     recentTools: 'Recently Used',
     viewTool: 'Open Tool',
+    guides: 'Guides',
+    readGuide: 'Read Guide',
+    relatedGuides: 'Educational Guides & Articles',
   },
   km: {
     brandName: 'KhmerTools',
@@ -76,5 +79,8 @@ export const UI_STRINGS = {
     madeWithLove: 'បង្កើតឡើងដោយក្ដីស្រឡាញ់សម្រាប់ប្រទេសកម្ពុជា 🇰🇭 និងអ្នកប្រើប្រាស់ទូទាំងពិភពលោក។',
     recentTools: 'ឧបករណ៍ប្រើថ្មីៗ',
     viewTool: 'ចូលប្រើប្រាស់',
+    guides: 'អត្ថបទណែនាំ',
+    readGuide: 'អានអត្ថបទ',
+    relatedGuides: 'អត្ថបទចំណេះដឹង និងការណែនាំ',
   }
 };

@@ -1,17 +1,25 @@
 import { MetadataRoute } from 'next';
 import { TOOLS, CATEGORIES, ToolCategory } from '@/lib/tools-registry';
+import { GUIDES } from '@/lib/guides-data';
 import { SITE_URL } from '@/lib/site-config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
   // Use a stable release timestamp for search engine indexers
-  const releaseDate = new Date('2026-09-14T00:00:00.000Z');
+  const releaseDate = new Date('2026-09-21T00:00:00.000Z');
 
   const toolRoutes = TOOLS.map((tool) => ({
     url: `${baseUrl}/tools/${tool.slug}`,
     lastModified: releaseDate,
     changeFrequency: 'weekly' as const,
     priority: tool.popular ? 0.9 : 0.8,
+  }));
+
+  const guideRoutes = GUIDES.map((guide) => ({
+    url: `${baseUrl}/guides/${guide.slug}`,
+    lastModified: new Date(`${guide.updatedAt}T00:00:00.000Z`),
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
   }));
 
   const categoryRoutes = (Object.keys(CATEGORIES) as ToolCategory[]).map((cat) => ({
@@ -24,6 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
     { path: '/about', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/guides', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/privacy', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/terms', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/contact', priority: 0.7, changeFrequency: 'monthly' as const },
@@ -34,5 +43,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: item.priority,
   }));
 
-  return [...staticRoutes, ...categoryRoutes, ...toolRoutes];
+  return [...staticRoutes, ...categoryRoutes, ...guideRoutes, ...toolRoutes];
 }
