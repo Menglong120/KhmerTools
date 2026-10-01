@@ -153,9 +153,6 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
         <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
           {guide.summary.en}
         </p>
-        <p className="text-xs text-slate-500 dark:text-slate-400 italic">
-          {guide.summary.km}
-        </p>
       </div>
 
       {/* Table of Contents */}
@@ -204,9 +201,6 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
 
             <div className="space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed pt-2">
               <div className="whitespace-pre-line">{section.content.en}</div>
-              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 text-xs sm:text-sm text-slate-600 dark:text-slate-400 whitespace-pre-line italic">
-                {section.content.km}
-              </div>
             </div>
           </section>
         ))}

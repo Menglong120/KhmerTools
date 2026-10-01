@@ -45,8 +45,8 @@ export async function generateMetadata({ params }: ToolPageProps): Promise<Metad
     };
   }
 
-  const title = `${tool.name.en} | ${tool.name.km}`;
-  const description = `${tool.description.en} ${tool.description.km}`;
+  const title = tool.name.en;
+  const description = tool.description.en;
 
   return {
     title,
@@ -196,13 +196,11 @@ export default async function ToolPage({ params }: ToolPageProps) {
           </div>
           <div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-100">
-              {tool.name.en} <span className="text-indigo-600 dark:text-indigo-400 font-bold block sm:inline">({tool.name.km})</span>
+              {tool.name.en}
+              <span className="text-xs font-normal text-indigo-500 dark:text-indigo-400 ml-2 align-middle">{tool.name.km}</span>
             </h1>
             <p className="mt-1 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
               {tool.description.en}
-            </p>
-            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-              {tool.description.km}
             </p>
           </div>
         </div>
@@ -237,17 +235,11 @@ export default async function ToolPage({ params }: ToolPageProps) {
 
         <div className="space-y-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
           <p>{editorial.overview.en}</p>
-          <p className="text-xs text-slate-500 dark:text-slate-400 italic bg-slate-50 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/50">
-            {editorial.overview.km}
-          </p>
 
           <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 pt-2">
-            Algorithmic Logic & Calculation
+            Algorithmic Logic &amp; Calculation
           </h3>
           <p>{editorial.howItWorks.en}</p>
-          <p className="text-xs text-slate-500 dark:text-slate-400 italic bg-slate-50 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/50">
-            {editorial.howItWorks.km}
-          </p>
         </div>
 
         {/* Technical Standards Box */}
@@ -319,34 +311,14 @@ export default async function ToolPage({ params }: ToolPageProps) {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
-          {/* English Instructions */}
-          <div className="space-y-2">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-              English Guide
-            </h3>
-            <ol className="space-y-2 text-sm text-slate-600 dark:text-slate-400 list-decimal list-inside">
-              {tool.instructions.en.map((step, idx) => (
-                <li key={idx} className="leading-relaxed">
-                  {step}
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          {/* Khmer Instructions */}
-          <div className="space-y-2">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-              ការណែនាំជាភាសាខ្មែរ
-            </h3>
-            <ol className="space-y-2 text-sm text-slate-600 dark:text-slate-400 list-decimal list-inside">
-              {tool.instructions.km.map((step, idx) => (
-                <li key={idx} className="leading-relaxed">
-                  {step}
-                </li>
-              ))}
-            </ol>
-          </div>
+        <div className="space-y-2 pt-2">
+          <ol className="space-y-2 text-sm text-slate-600 dark:text-slate-400 list-decimal list-inside">
+            {tool.instructions.en.map((step, idx) => (
+              <li key={idx} className="leading-relaxed">
+                {step}
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

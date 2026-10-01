@@ -151,7 +151,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             {catInfo.name.en} <span className="text-indigo-600 dark:text-indigo-400 font-bold block sm:inline">({catInfo.name.km})</span>
           </h1>
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-            {catInfo.description.en} • {catInfo.description.km}
+            {catInfo.description.en}
           </p>
         </div>
       </div>
@@ -178,9 +178,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </h2>
         <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
           {editorial.aboutText}
-        </p>
-        <p className="text-xs text-slate-500 dark:text-slate-400 italic bg-slate-50 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/50">
-          {editorial.aboutTextKm}
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
