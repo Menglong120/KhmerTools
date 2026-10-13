@@ -39,10 +39,10 @@ export function HomePageClient() {
         '@id': `${SITE_URL}/#website`,
         url: SITE_URL,
         name: 'KhmerTools',
-        alternateName: ['KhmerTools 🇰🇭', 'ឧបករណ៍ខ្មែរ'],
+        alternateName: ['KhmerTools 🇰🇭'],
         description:
           'Free, fast, and private client-side online tools for Cambodia and developers worldwide.',
-        inLanguage: ['km-KH', 'en-US'],
+        inLanguage: 'en-US',
       },
       {
         '@type': 'Organization',

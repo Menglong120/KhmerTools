@@ -56,7 +56,7 @@ export default async function Image() {
           }}
         >
           <span>🇰🇭</span>
-          <span>គេហទំព័រឧបករណ៍អនឡាញឥតគិតថ្លៃ</span>
+          <span>Free Online Utilities Platform</span>
         </div>
 
         {/* Title */}

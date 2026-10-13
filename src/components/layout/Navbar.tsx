@@ -82,12 +82,12 @@ export function Navbar() {
             type="button"
             onClick={toggleLocale}
             className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer"
-            title="Switch Language: English / ភាសាខ្មែរ"
+            title="Switch Language (EN / KM)"
           >
             <Languages className="w-3.5 h-3.5 text-indigo-500" />
             <span className={locale === 'en' ? 'font-bold text-indigo-600 dark:text-indigo-400 underline underline-offset-2' : 'text-slate-400'}>EN</span>
             <span className="text-slate-300 dark:text-slate-600">/</span>
-            <span className={locale === 'km' ? 'font-bold text-indigo-600 dark:text-indigo-400 underline underline-offset-2' : 'text-slate-400'}>ខ្មែរ</span>
+            <span className={locale === 'km' ? 'font-bold text-indigo-600 dark:text-indigo-400 underline underline-offset-2' : 'text-slate-400'}>KM</span>
           </button>
 
           {/* Theme Switch */}
@@ -120,10 +120,11 @@ export function Navbar() {
             type="button"
             onClick={toggleLocale}
             className="px-2 py-1 text-xs font-bold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 inline-flex items-center gap-1"
+            title="Switch Language (EN / KM)"
           >
             <span className={locale === 'en' ? 'font-bold text-indigo-600 dark:text-indigo-400' : 'text-slate-400'}>EN</span>
             <span className="text-slate-300 dark:text-slate-600">/</span>
-            <span className={locale === 'km' ? 'font-bold text-indigo-600 dark:text-indigo-400' : 'text-slate-400'}>ខ្មែរ</span>
+            <span className={locale === 'km' ? 'font-bold text-indigo-600 dark:text-indigo-400' : 'text-slate-400'}>KM</span>
           </button>
 
           <button

@@ -83,8 +83,8 @@ const CATEGORY_EDITORIAL: Record<
       'Instant responsive output with zero delay',
     ],
     guideSlugs: [
+      'loan-amortization-and-interest-calculation-guide',
       'understanding-buddhist-era-calendar',
-      'cambodian-riel-currency-and-number-system',
     ],
   },
   developer: {
@@ -100,6 +100,8 @@ const CATEGORY_EDITORIAL: Record<
     ],
     guideSlugs: [
       'client-side-privacy-guide-for-developer-tools',
+      'qr-code-technology-and-emv-standards-guide',
+      'digital-color-spaces-hex-rgb-hsl-guide',
       'json-data-formatting-and-validation-guide',
     ],
   },
@@ -148,7 +150,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <span>100% Client-Side & Free</span>
           </div>
           <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100">
-            {catInfo.name.en} <span className="text-indigo-600 dark:text-indigo-400 font-bold block sm:inline">({catInfo.name.km})</span>
+            {catInfo.name.en}
           </h1>
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
             {catInfo.description.en}
@@ -166,7 +168,19 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {categoryTools.map((tool) => (
-            <ToolCard key={tool.id} tool={tool} />
+            <ToolCard
+              key={tool.id}
+              tool={{
+                id: tool.id,
+                slug: tool.slug,
+                category: tool.category,
+                name: tool.name.en,
+                shortDescription: tool.shortDescription.en,
+                iconName: tool.iconName,
+                popular: tool.popular,
+                tags: tool.tags,
+              }}
+            />
           ))}
         </div>
       </section>

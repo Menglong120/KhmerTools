@@ -22,13 +22,23 @@ export function ContactClient() {
       <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200/80 dark:border-slate-800/80 shadow-xs space-y-6">
         <div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">
-            Contact & Feedback • ទំនាក់ទំនង
+            Contact & Feedback
           </h1>
           <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
             {locale === 'km'
               ? 'មានសំណួរ យោបល់កែលម្អ ឬចង់ស្នើសុំឧបករណ៍ថ្មី? សូមទាក់ទងមកយើងខ្ញុំ។'
-              : 'Have feedback, questions, or want to suggest a new tool? We would love to hear from you.'}
+              : 'Have feedback, questions, bug reports, or want to suggest a new tool? We would love to hear from you.'}
           </p>
+
+          <div className="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60 text-xs text-slate-600 dark:text-slate-300 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <span>Direct Publisher Email:</span>
+            <a
+              href="mailto:support@khmertools.com"
+              className="font-mono font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
+            >
+              support@khmertools.com
+            </a>
+          </div>
         </div>
 
         {submitted ? (

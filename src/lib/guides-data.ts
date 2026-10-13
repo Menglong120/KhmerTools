@@ -252,6 +252,198 @@ export const GUIDES: GuideArticle[] = [
       },
     ],
   },
+  {
+    slug: 'loan-amortization-and-interest-calculation-guide',
+    title: {
+      en: 'The Complete Guide to Loan Amortization & Interest Calculations',
+      km: 'មគ្គុទ្ទេសក៍ពេញលេញអំពីការគណនាកម្ចី និងការរំលស់ប្រាក់ដើម-ការប្រាក់',
+    },
+    summary: {
+      en: 'Master the mathematical foundations behind reducing balance amortization, flat interest rates, Cambodian banking regulations, and effective APR comparison.',
+      km: 'ស្វែងយល់លម្អិតអំពីរូបមន្តគណនាកម្ចី ការប្រាក់ថយចុះ ការប្រាក់ថេរ និងច្បាប់កំណត់របស់ធនាគារជាតិនៃកម្ពុជា។',
+    },
+    readTime: '8 min read',
+    publishedAt: '2026-09-15',
+    updatedAt: '2026-10-10',
+    author: 'KhmerTools Financial Engineering',
+    category: 'general',
+    tags: ['Loan Calculator', 'Amortization', 'Banking', 'Interest Rates', 'Finance', 'Cambodia'],
+    relatedToolSlugs: ['loan-calculator', 'percentage-calculator'],
+    sections: [
+      {
+        id: 'amortization-basics',
+        title: {
+          en: 'Understanding Loan Amortization: Principal vs. Interest Breakdown',
+          km: 'ស្វែងយល់អំពីការរំលស់ប្រាក់កម្ចី៖ ការបែងចែកប្រាក់ដើម និងការប្រាក់',
+        },
+        content: {
+          en: 'Amortization represents the scheduled repayment of a loan through regular installments over time. In a standard amortized loan, every periodic installment is split into two components: interest charges and principal reduction.\n\nDuring the early phase of a loan term, the remaining balance is at its highest, meaning the overwhelming portion of your monthly payment goes toward satisfying accrued interest. As the principal is progressively paid down, interest charges diminish, and an increasingly larger share of each subsequent payment is applied directly against the outstanding debt balance.',
+          km: 'ការរំលស់ប្រាក់កម្ចី (Amortization) គឺជាដំណើរការនៃការសងបំណុលតាមដំណាក់កាលទៀងទាត់។ ការទូទាត់នីមួយៗរួមបញ្ចូលទាំងការប្រាក់ និងប្រាក់ដើម។',
+        },
+      },
+      {
+        id: 'flat-vs-reducing',
+        title: {
+          en: 'Reducing Balance vs. Flat Rate: The Crucial Difference in Cambodian Borrowing',
+          km: 'ភាពខុសគ្នារវាងការប្រាក់ថយចុះ (Reducing) និងការប្រាក់ថេរ (Flat Rate)',
+        },
+        content: {
+          en: 'Borrowers in Southeast Asia and Cambodia frequently encounter two fundamentally different methods of calculating interest:\n\n1. Reducing Balance Method (Declining Balance): Interest is calculated solely on the remaining unpaid principal at each compounding cycle. As you repay principal, your monthly interest cost drops correspondingly. This is the mandatory standard enforced by the National Bank of Cambodia (NBC) for commercial banks and microfinance institutions (MFIs).\n\n2. Flat Rate Method: Interest is calculated against the original borrowed principal across the entire tenure, regardless of how much principal has already been repaid. A nominal 10% flat rate loan actually translates to an effective annual percentage rate (APR) of roughly 18% to 19% on a reducing basis—nearly double the advertised number.',
+          km: 'ការប្រាក់ថយចុះ (Reducing Balance) គិតការប្រាក់តែលើប្រាក់ដើមដែលនៅសល់ប៉ុណ្ណោះ ដែលជាស្តង់ដារតម្រូវដោយធនាគារជាតិនៃកម្ពុជា។ ចំណែកការប្រាក់ថេរ (Flat Rate) គិតការប្រាក់លើប្រាក់ដើមដំបូងរហូតដល់ចប់កិច្ចសន្យា។',
+        },
+      },
+      {
+        id: 'monthly-payment-formula',
+        title: {
+          en: 'The Standard Amortization Formula Explained Step-by-Step',
+          km: 'រូបមន្តគណនាការទូទាត់ប្រចាំខែជាស្តង់ដារ',
+        },
+        content: {
+          en: 'The universal mathematical formula for calculating a fixed monthly payment (PMT) on a fully amortized loan is:\n\nPMT = P * [r(1 + r)^n] / [(1 + r)^n - 1]\n\nWhere:\n• P = Initial Principal loan amount (e.g., $10,000 USD or 40,000,000 KHR)\n• r = Periodic interest rate (annual interest rate divided by 12 months)\n• n = Total number of monthly payment periods (e.g., a 5-year loan = 60 periods)\n\nKhmerTools\' Loan Calculator implements this exact formula with double-precision IEEE 754 arithmetic, generating accurate full monthly amortization schedules with principal/interest breakdowns down to the cent.',
+          km: 'រូបមន្តគណនា PMT = P * [r(1 + r)^n] / [(1 + r)^n - 1] ត្រូវបានប្រើប្រាស់ជាសកលក្នុងវិស័យធនាគារ ដើម្បីគណនាការទូទាត់ប្រចាំខែឱ្យស្មើគ្នា។',
+        },
+      },
+      {
+        id: 'prepayment-and-early-payoff',
+        title: {
+          en: 'How Extra Principal Payments Reduce Total Lifetime Interest',
+          km: 'ផលប្រយោជន៍នៃការសងប្រាក់ដើមបន្ថែមមុនកាលកំណត់',
+        },
+        content: {
+          en: 'Because interest on reducing balance loans accrues daily or monthly against the active balance, paying even a small extra lump sum directly toward principal delivers massive cumulative savings. By immediately shrinking the balance upon which future interest is calculated, you both shorten the effective loan duration and avoid thousands of dollars in lifetime financing fees.',
+          km: 'ការសងប្រាក់ដើមបន្ថែមជួយកាត់បន្ថយទំហំបំណុលដែលត្រូវគិតការប្រាក់ ធ្វើឱ្យអ្នករួចបំណុលលឿនជាងមុន និងសន្សំប្រាក់បានយ៉ាងច្រើន។',
+        },
+      },
+    ],
+  },
+  {
+    slug: 'digital-color-spaces-hex-rgb-hsl-guide',
+    title: {
+      en: "A Developer's Comprehensive Guide to Digital Color Models: HEX, RGB, HSL & OKLCH",
+      km: 'មគ្គុទ្ទេសក៍អ្នកអភិវឌ្ឍន៍អំពីប្រព័ន្ធកូដពណ៌ឌីជីថល៖ HEX, RGB, HSL និង OKLCH',
+    },
+    summary: {
+      en: 'Learn how modern screens render light through sRGB gamuts, understand 24-bit hexadecimal math, master HSL cylinder projections, and design accessible WCAG color palettes.',
+      km: 'ស្វែងយល់អំពីទ្រឹស្ដីពណ៌ឌីជីថល កូដ HEX 24-bit ប្រព័ន្ធ HSL និងស្តង់ដារភាពងាយស្រួលមើល WCAG សម្រាប់គេហទំព័រ។',
+    },
+    readTime: '7 min read',
+    publishedAt: '2026-09-18',
+    updatedAt: '2026-10-11',
+    author: 'KhmerTools Web Architecture',
+    category: 'developer',
+    tags: ['Color Theory', 'HEX', 'RGB', 'HSL', 'OKLCH', 'CSS', 'Web Development'],
+    relatedToolSlugs: ['color-converter', 'json-formatter'],
+    sections: [
+      {
+        id: 'additive-color-theory',
+        title: {
+          en: 'Additive Color Theory: How RGB Pixels Form Digital Color',
+          km: 'ទ្រឹស្ដីពន្លឺបូក (Additive Color)៖ របៀបដែលអេក្រង់បង្ហាញពណ៌',
+        },
+        content: {
+          en: 'Unlike physical paints which use subtractive color mixing (CMYK), computer displays emit photon wavelengths using the additive RGB model. Each physical pixel on an OLED or LCD monitor consists of three tiny subpixels: Red, Green, and Blue.\n\nWhen all three subpixels emit at zero intensity (0, 0, 0), the screen appears pitch black. When all three emit at peak intensity (255, 255, 255 in 8-bit depth), our eyes perceive pure white light. By varying the electrical excitation across 256 gradations per channel (2^8 = 256), a monitor produces 256 * 256 * 256 = 16,777,216 distinct color combinations—known as 24-bit TrueColor.',
+          km: 'អេក្រង់កុំព្យូទ័រ និងទូរស័ព្ទប្រើប្រាស់ប្រព័ន្ធពន្លឺបូក RGB (ក្រហម បៃតង ខៀវ) ដោយកម្រិតនីមួយៗមានពី ០ ដល់ ២៥៥ បង្កើតបានជា ១៦.៧ លានពណ៌ផ្សេងគ្នា។',
+        },
+      },
+      {
+        id: 'hex-arithmetic',
+        title: {
+          en: 'Decoding Hexadecimal Color Notation: From 8-Bit Channels to Alpha Transparency',
+          km: 'របៀបគណនាកូដពណ៌ Hexadecimal (HEX)',
+        },
+        content: {
+          en: 'Hexadecimal color strings (#RRGGBB) are simply base-16 representations of three 8-bit integers:\n\n• Digits range from 0 to 9 followed by A (10) through F (15).\n• One byte (0–255 in decimal) corresponds to exactly two hex characters: 00 = 0, 7F = 127, FF = 255.\n• For example, #4F46E5 represents Red: 0x4F (79), Green: 0x46 (70), Blue: 0xE5 (229)—the signature indigo hue of KhmerTools.\n• Modern CSS also supports an optional 8-character hex format (#RRGGBBAA), where the final two digits encode opacity (alpha channel from 00 for 0% to FF for 100%).',
+          km: 'កូដពណ៌ HEX (#RRGGBB) គឺជាទម្រង់គោល ១៦ ដែលតំណាងឱ្យកម្រិតពណ៌ក្រហម បៃតង និងខៀវ។ កូដ ៨ ខ្ទង់ (#RRGGBBAA) បន្ថែមនូវកម្រិតថ្លា (Opacity)។',
+        },
+      },
+      {
+        id: 'hsl-intuitive-space',
+        title: {
+          en: 'Why HSL & HSLuv Are Superior for Human-Centric UI Design',
+          km: 'អត្ថប្រយោជន៍នៃប្រព័ន្ធពណ៌ HSL ក្នុងការរចនា UI',
+        },
+        content: {
+          en: 'While RGB and HEX match hardware reality, they are unintuitive for designers. If you need a darker shade of #3B82F6, which channel do you modify? HSL solves this by projecting the RGB cube into a cylindrical coordinate space:\n\n1. Hue (0° to 360°): The pure pigment position on the color wheel (0° = Red, 120° = Green, 240° = Blue).\n2. Saturation (0% to 100%): The vibrancy of the color, ranging from grayscale to vivid saturation.\n3. Lightness (0% to 100%): The illumination, from pure black (0%) to pure white (100%).\n\nAdjusting brightness in HSL merely requires tweaking the Lightness percentage, making theme generation and hover states effortless in modern CSS.',
+          km: 'HSL (Hue, Saturation, Lightness) ជួយឱ្យអ្នករចនាគេហទំព័រងាយស្រួលកំណត់ពណ៌ ស្រមោល និងពន្លឺបានរហ័សជាងការប្រើ RGB ឬ HEX។',
+        },
+      },
+      {
+        id: 'wcag-accessibility',
+        title: {
+          en: 'Contrast Ratios & WCAG 2.2 AA/AAA Accessibility Guidelines',
+          km: 'ស្តង់ដារកម្រិតកម្រិតពណ៌ច្បាស់ WCAG សម្រាប់អ្នកប្រើប្រាស់ទូទៅ',
+        },
+        content: {
+          en: 'Digital accessibility mandates that text must have sufficient contrast against background surfaces to remain readable for visually impaired users. Under the World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG 2.2):\n\n• Level AA requires a contrast ratio of at least 4.5:1 for normal body text and 3:1 for large text (18pt+ or 14pt bold).\n• Level AAA requires an enhanced contrast ratio of at least 7:1 for normal text.\n\nAlways test color pairings with our Color Converter to verify compliance before deploying production design tokens.',
+          km: 'ស្តង់ដារ WCAG តម្រូវឱ្យអក្សរ និងផ្ទៃខាងក្រោយមានកម្រិត Contrast យ៉ាងតិច 4.5:1 ដើម្បីធានាថាអ្នកប្រើប្រាស់គ្រប់រូបអាចអានបានយ៉ាងច្បាស់។',
+        },
+      },
+    ],
+  },
+  {
+    slug: 'qr-code-technology-and-emv-standards-guide',
+    title: {
+      en: 'Deep Dive into QR Code Technology, Reed-Solomon Error Correction & KHQR Standards',
+      km: 'ស្វែងយល់ស៊ីជម្រៅអំពីបច្ចេកវិទ្យា QR Code ក្បួនកែតម្រូវកំហុស Reed-Solomon និងស្ដង់ដារ KHQR',
+    },
+    summary: {
+      en: 'Understand the mathematical matrix geometry of 2D barcodes, Reed-Solomon burst error correction algorithms, and how EMVCo and KHQR power national payment networks.',
+      km: 'ស្វែងយល់អំពីរចនាសម្ព័ន្ធ QR Code ក្បួនកែសម្រួលទិន្នន័យពេលខូចខាត (Error Correction) និងស្ដង់ដារទូទាត់ប្រាក់ជាតិ KHQR របស់ធនាគារជាតិនៃកម្ពុជា។',
+    },
+    readTime: '8 min read',
+    publishedAt: '2026-09-22',
+    updatedAt: '2026-10-12',
+    author: 'KhmerTools Technical Architecture',
+    category: 'developer',
+    tags: ['QR Code', 'Reed-Solomon', 'KHQR', 'EMVCo', 'Digital Payments', 'Cambodia', 'Data Encoding'],
+    relatedToolSlugs: ['qr-code-generator', 'url-encoder-decoder', 'base64-encoder-decoder'],
+    sections: [
+      {
+        id: 'matrix-architecture',
+        title: {
+          en: 'Anatomy of a QR Code: Finder Patterns, Timing Patterns & Alignment Grids',
+          km: 'កាយវិភាគនៃ QR Code៖ ចំណុចសម្គាល់ទិសដៅ និងក្រឡាទិន្នន័យ',
+        },
+        content: {
+          en: 'Invented in 1994 by Masahiro Hara at Denso Wave, the Quick Response (QR) code is a 2-dimensional optical matrix designed for high-speed scanning from any angle. Every QR symbol comprises specialized structural elements:\n\n1. Position Detection Patterns (Finder Patterns): The three distinctive concentric square targets in the corners allow scanners to establish 360° orientation and tilt angle.\n2. Timing Patterns: Alternating black and white modules connecting the finder squares that identify coordinate grid scales.\n3. Alignment Patterns: Smaller internal squares placed across larger versions to compensate for curved surfaces or perspective distortion.\n4. Format and Version Information: Encodes the active error correction level and mask pattern applied to prevent optical dead zones.',
+          km: 'QR Code ត្រូវបានបង្កើតឡើងក្នុងឆ្នាំ ១៩៩៤ ដោយក្រុមហ៊ុន Denso Wave។ វាមានចំណុចសម្គាល់ធំៗ ៣ នៅជ្រុងដើម្បីកំណត់ទិសដៅស្កេនបាន ៣៦០ ដឺក្រេយ៉ាងរហ័ស។',
+        },
+      },
+      {
+        id: 'reed-solomon-math',
+        title: {
+          en: 'Fault-Tolerant Error Correction: The Reed-Solomon Polynomial Algorithm',
+          km: 'ក្បួនដោះស្រាយ Reed-Solomon៖ សមត្ថភាពស្កេនបានទោះបី QR Code ដាច់រហែក',
+        },
+        content: {
+          en: 'One of the defining triumphs of QR technology is its ability to be scanned even when up to 30% of the symbol is obscured, dirty, or torn. This resilience is powered by Reed-Solomon cyclic error correction coding operating over Galois Fields (GF(2^8)):\n\n• Level L (Low): Restores up to 7% of lost data.\n• Level M (Medium - Default): Restores up to 15% of damaged bytes; standard for URLs.\n• Level Q (Quartile): Restores up to 25% of damaged bytes.\n• Level H (High): Restores up to 30% of lost payload; mandatory when embedding corporate logos into the center of the QR matrix.\n\nKhmerTools\' QR Code Generator allows users to configure error correction levels dynamically depending on whether the graphic will be displayed on pristine screens or printed on outdoor merchandise.',
+          km: 'បច្ចេកវិទ្យា Reed-Solomon អនុញ្ញាតឱ្យ QR Code អាចស្កេនបាន ទោះបីខូចខាតរហូតដល់ ៣០% (កម្រិត Level H)។ នេះជាមូលហេតុដែលយើងអាចដាក់ Logo នៅចំកណ្តាលបានដោយមិនប៉ះពាល់ដល់ការស្កេន។',
+        },
+      },
+      {
+        id: 'encoding-modes',
+        title: {
+          en: 'Data Optimization: Numeric, Alphanumeric, Byte, and Kanji Modes',
+          km: 'របៀបបម្លែងទិន្នន័យ (Encoding Modes) ដើម្បីសន្សំទំហំក្រឡា',
+        },
+        content: {
+          en: 'To minimize symbol density and maximize scan distance, QR encoders inspect input payloads and choose the most compact bit packing mode:\n\n• Numeric Mode: Encodes digits (0–9) efficiently by packing 3 digits into 10 bits.\n• Alphanumeric Mode: Packs 45 characters (uppercase letters, numbers, symbols) by encoding 2 characters into 11 bits.\n• Byte Mode (8-bit): Handles arbitrary binary data, UTF-8 strings, and URLs with 8 bits per character.\n• Kanji Mode: Compresses Shift JIS double-byte characters into 13 bits each.',
+          km: 'ក្បួន Encoding ជ្រើសរើសទម្រង់ដែលសន្សំសំចៃបំផុត (Numeric, Alphanumeric, Byte) ដើម្បីឱ្យក្រឡា QR Code មានទំហំធំល្មម ងាយស្រួលស្កេនពីចម្ងាយ។',
+        },
+      },
+      {
+        id: 'emvco-khqr-integration',
+        title: {
+          en: 'Standardized Financial Payloads: The Architecture Behind EMVCo and KHQR',
+          km: 'ស្ដង់ដារទូទាត់ប្រាក់ EMVCo និងប្រព័ន្ធ KHQR របស់កម្ពុជា',
+        },
+        content: {
+          en: 'In Cambodia, the National Bank of Cambodia spearheaded the KHQR standard under the Bakong interbank settlement network. KHQR strictly adheres to international EMVCo QR Code Specifications for Payment Systems:\n\n• EMV payloads use Tag-Length-Value (TLV) syntax (e.g., Tag 00 "Format Indicator", Tag 54 "Transaction Amount", Tag 53 "Currency Code 116 for KHR / 840 for USD").\n• Every financial QR string ends with Tag 63 containing a 16-bit Cyclic Redundancy Check (CRC-16/CCITT-FALSE) checksum. If even a single character in the account number or amount is corrupted during scan, the banking app rejects the payment before funds can be transferred.\n\nUnderstanding these underlying data structures ensures fintech developers build interoperable, secure payment experiences across Southeast Asia.',
+          km: 'ប្រព័ន្ធ KHQR របស់កម្ពុជា ក្រោមប្រព័ន្ធបាគង គោរពតាមស្តង់ដារអន្តរជាតិ EMVCo ដោយប្រើប្រព័ន្ធ Tag-Length-Value (TLV) និងមានកូដផ្ទៀងផ្ទាត់ CRC-16 ការពារការច្រឡំគណនី ឬចំនួនទឹកប្រាក់។',
+        },
+      },
+    ],
+  },
 ];
 
 export function getGuideBySlug(slug: string): GuideArticle | undefined {

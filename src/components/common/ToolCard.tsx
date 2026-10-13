@@ -2,18 +2,39 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ToolMeta, CATEGORIES } from '@/lib/tools-registry';
+import { ToolMeta, CATEGORIES, ToolCategory } from '@/lib/tools-registry';
 import { useApp } from '@/context/AppContext';
 import { ToolIcon } from './ToolIcon';
 import { ArrowUpRight, Flame } from 'lucide-react';
 
+export interface ToolCardData {
+  id: string;
+  slug: string;
+  category: ToolCategory;
+  name: string | { en: string; km?: string };
+  shortDescription: string | { en: string; km?: string };
+  iconName: string;
+  popular?: boolean;
+  tags: string[];
+}
+
 interface ToolCardProps {
-  tool: ToolMeta;
+  tool: ToolCardData;
 }
 
 export function ToolCard({ tool }: ToolCardProps) {
   const { locale } = useApp();
   const categoryInfo = CATEGORIES[tool.category];
+
+  const displayName =
+    typeof tool.name === 'string'
+      ? tool.name
+      : (locale === 'km' && tool.name.km) || tool.name.en;
+
+  const displayDescription =
+    typeof tool.shortDescription === 'string'
+      ? tool.shortDescription
+      : (locale === 'km' && tool.shortDescription.km) || tool.shortDescription.en;
 
   const categoryColor = {
     khmer: 'text-amber-600 bg-amber-50 border-amber-200/70 dark:text-amber-400 dark:bg-amber-950/40 dark:border-amber-800/40',
@@ -55,12 +76,12 @@ export function ToolCard({ tool }: ToolCardProps) {
         </div>
 
         <h3 className="text-base font-semibold text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors flex items-center justify-between">
-          <span>{tool.name[locale]}</span>
+          <span>{displayName}</span>
           <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-200 text-indigo-500" />
         </h3>
 
         <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
-          {tool.shortDescription[locale]}
+          {displayDescription}
         </p>
       </div>
 

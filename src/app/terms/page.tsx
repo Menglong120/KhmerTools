@@ -5,13 +5,13 @@ import { Breadcrumb } from '@/components/layout/Breadcrumb';
 import { SITE_URL } from '@/lib/site-config';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | លក្ខខណ្ឌប្រើប្រាស់',
+  title: 'Terms of Service | KhmerTools 🇰🇭',
   description: 'Terms and conditions for utilizing the free online tools on KhmerTools.',
   alternates: {
     canonical: '/terms',
   },
   openGraph: {
-    title: 'Terms of Service | លក្ខខណ្ឌប្រើប្រាស់ - KhmerTools 🇰🇭',
+    title: 'Terms of Service | KhmerTools 🇰🇭',
     description: 'Terms and conditions for utilizing the free online tools on KhmerTools.',
     url: `${SITE_URL}/terms`,
   },
@@ -24,7 +24,7 @@ export default function TermsPage() {
 
       <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200/80 dark:border-slate-800/80 shadow-xs space-y-6">
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">
-          Terms of Service • លក្ខខណ្ឌប្រើប្រាស់
+          Terms of Service
         </h1>
 
         <p className="text-xs text-slate-400">

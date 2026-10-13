@@ -9,7 +9,7 @@ export function UrlEncoder() {
   const { locale, t } = useApp();
   const [direction, setDirection] = useState<'encode' | 'decode'>('encode');
   const [encodeMode, setEncodeMode] = useState<'component' | 'full'>('component');
-  const [inputVal, setInputVal] = useState<string>('https://khmertools.com/search?q=បម្លែងលេខខ្មែរ&lang=km');
+  const [inputVal, setInputVal] = useState<string>('https://khmertools.com/search?q=online+tools&lang=en');
 
   let outputVal = '';
   let error: string | null = null;

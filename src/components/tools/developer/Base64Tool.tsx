@@ -11,7 +11,7 @@ export function Base64Tool() {
   const [direction, setDirection] = useState<'encode' | 'decode'>('encode');
 
   // Text state
-  const [inputText, setInputText] = useState<string>('សួស្តីកម្ពុជា! Hello KhmerTools 🇰🇭');
+  const [inputText, setInputText] = useState<string>('Hello KhmerTools! Fast & Secure Online Utilities 🚀');
   const [outputText, setOutputText] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
 

@@ -1,12 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ToolFAQ } from '@/lib/tools-registry';
 import { useApp } from '@/context/AppContext';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
+export interface FAQItem {
+  question: string | { en: string; km?: string };
+  answer: string | { en: string; km?: string };
+}
+
 interface FAQSectionProps {
-  faqs: ToolFAQ[];
+  faqs: FAQItem[];
 }
 
 export function FAQSection({ faqs }: FAQSectionProps) {
@@ -29,6 +33,15 @@ export function FAQSection({ faqs }: FAQSectionProps) {
       <div className="space-y-3">
         {faqs.map((faq, index) => {
           const isOpen = openIndex === index;
+          const questionText =
+            typeof faq.question === 'string'
+              ? faq.question
+              : (locale === 'km' && faq.question.km) || faq.question.en;
+          const answerText =
+            typeof faq.answer === 'string'
+              ? faq.answer
+              : (locale === 'km' && faq.answer.km) || faq.answer.en;
+
           return (
             <div
               key={index}
@@ -39,7 +52,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
                 onClick={() => setOpenIndex(isOpen ? null : index)}
                 className="w-full flex items-center justify-between p-4 text-left font-medium text-slate-900 dark:text-slate-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               >
-                <span className="pr-4">{faq.question[locale]}</span>
+                <span className="pr-4">{questionText}</span>
                 <ChevronDown
                   className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200 ${
                     isOpen ? 'rotate-180 text-indigo-500' : ''
@@ -48,7 +61,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
               </button>
               {isOpen && (
                 <div className="px-4 pb-4 pt-1 text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/50 bg-slate-50/50 dark:bg-slate-950/30">
-                  {faq.answer[locale]}
+                  {answerText}
                 </div>
               )}
             </div>

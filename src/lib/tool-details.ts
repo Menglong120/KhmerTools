@@ -1317,6 +1317,19 @@ export function getToolEditorial(slug: string, toolName: { en: string; km: strin
         },
       },
     ],
-    relatedGuideSlug: category === 'khmer' ? 'cambodian-riel-currency-and-number-system' : 'client-side-privacy-guide-for-developer-tools',
+    relatedGuideSlug:
+      slug === 'loan-calculator'
+        ? 'loan-amortization-and-interest-calculation-guide'
+        : slug === 'color-converter'
+        ? 'digital-color-spaces-hex-rgb-hsl-guide'
+        : slug === 'qr-code-generator'
+        ? 'qr-code-technology-and-emv-standards-guide'
+        : slug === 'khmer-date-converter' || slug === 'date-calculator'
+        ? 'understanding-buddhist-era-calendar'
+        : slug === 'json-formatter'
+        ? 'json-data-formatting-and-validation-guide'
+        : category === 'khmer'
+        ? 'cambodian-riel-currency-and-number-system'
+        : 'client-side-privacy-guide-for-developer-tools',
   };
 }

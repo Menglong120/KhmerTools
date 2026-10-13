@@ -70,7 +70,6 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
     headline: guide.title.en,
-    alternativeHeadline: guide.title.km,
     description: guide.summary.en,
     datePublished: guide.publishedAt,
     dateModified: guide.updatedAt,
@@ -117,16 +116,13 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
           </Link>
 
           <span className="text-xs px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-medium">
-            {guide.category === 'khmer' ? '🇰🇭 Cultural Reference' : '💻 Technical Reference'}
+            {guide.category === 'khmer' ? 'Cultural & Technical Reference' : 'Developer & Technical Reference'}
           </span>
         </div>
 
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight leading-tight">
           {guide.title.en}
         </h1>
-        <p className="text-base sm:text-lg text-indigo-600 dark:text-indigo-400 font-medium">
-          {guide.title.km}
-        </p>
 
         {/* Metadata row */}
         <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 dark:text-slate-400 pt-2 border-b border-slate-200/80 dark:border-slate-800/80 pb-4">
@@ -148,7 +144,7 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
       {/* Executive Summary */}
       <div className="p-6 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200/60 dark:border-indigo-800/60 space-y-2">
         <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300 block">
-          Executive Summary • សេចក្តីសង្ខេប
+          Executive Summary
         </span>
         <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
           {guide.summary.en}
@@ -159,7 +155,7 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
       <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-2xs space-y-3">
         <h2 className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200 flex items-center gap-2">
           <Bookmark className="w-4 h-4 text-indigo-500" />
-          <span>Table of Contents • មាតិកាអត្ថបទ</span>
+          <span>Table of Contents</span>
         </h2>
         <ul className="space-y-1.5 text-sm">
           {guide.sections.map((section, idx) => (
@@ -194,9 +190,6 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
                 {section.title.en}
               </h2>
-              <span className="text-xs text-indigo-600 dark:text-indigo-400 block">
-                {section.title.km}
-              </span>
             </div>
 
             <div className="space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed pt-2">
@@ -227,11 +220,23 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
         <section className="pt-6 space-y-4 border-t border-slate-200/80 dark:border-slate-800/80">
           <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
             <Wrench className="w-4 h-4 text-indigo-500" />
-            <span>Related Interactive Tools • ឧបករណ៍ដែលពាក់ព័ន្ធ</span>
+            <span>Related Interactive Tools</span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {relatedTools.map((tool) => (
-              <ToolCard key={tool.id} tool={tool} />
+              <ToolCard
+                key={tool.id}
+                tool={{
+                  id: tool.id,
+                  slug: tool.slug,
+                  category: tool.category,
+                  name: tool.name.en,
+                  shortDescription: tool.shortDescription.en,
+                  iconName: tool.iconName,
+                  popular: tool.popular,
+                  tags: tool.tags,
+                }}
+              />
             ))}
           </div>
         </section>

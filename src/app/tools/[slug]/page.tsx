@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: ToolPageProps): Promise<Metad
   return {
     title,
     description,
-    keywords: [...tool.tags, tool.name.en, tool.name.km, 'KhmerTools', 'online utility'],
+    keywords: [...tool.tags, tool.name.en, 'KhmerTools', 'online utility'],
     alternates: {
       canonical: `/tools/${tool.slug}`,
     },
@@ -95,7 +95,6 @@ export default async function ToolPage({ params }: ToolPageProps) {
       '@type': 'WebApplication',
       '@id': `${SITE_URL}/tools/${tool.slug}#webapp`,
       name: tool.name.en,
-      alternateName: tool.name.km,
       description: tool.description.en,
       url: `${SITE_URL}/tools/${tool.slug}`,
       applicationCategory: 'UtilityApplication',
@@ -138,10 +137,10 @@ export default async function ToolPage({ params }: ToolPageProps) {
       '@id': `${SITE_URL}/tools/${tool.slug}#faq`,
       mainEntity: combinedFaqs.map((faq) => ({
         '@type': 'Question',
-        name: `${faq.question.en} (${faq.question.km})`,
+        name: faq.question.en,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `${faq.answer.en} ${faq.answer.km}`,
+          text: faq.answer.en,
         },
       })),
     });
@@ -173,7 +172,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60">
-              {categoryInfo.name.en} • {categoryInfo.name.km}
+              {categoryInfo.name.en}
             </span>
             <span className="inline-flex items-center gap-1 text-[11px] font-medium px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/50">
               <ShieldCheck className="w-3 h-3 text-emerald-600" />
@@ -197,7 +196,6 @@ export default async function ToolPage({ params }: ToolPageProps) {
           <div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-100">
               {tool.name.en}
-              <span className="text-xs font-normal text-indigo-500 dark:text-indigo-400 ml-2 align-middle">{tool.name.km}</span>
             </h1>
             <p className="mt-1 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
               {tool.description.en}
@@ -228,7 +226,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
               About & How It Works
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              ព័ត៌មានលម្អិត និងដំណើរការនៃឧបករណ៍
+              Technical calculation logic, standards, and operational details
             </p>
           </div>
         </div>
@@ -255,7 +253,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
       <section className="space-y-4">
         <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
           <CheckCircle2 className="w-5 h-5 text-emerald-500" />
-          <span>Key Features & Capabilities • លក្ខណៈពិសេស</span>
+          <span>Key Features & Capabilities</span>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {editorial.features.map((feat, idx) => (
@@ -264,7 +262,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
               className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-2xs space-y-1.5"
             >
               <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">
-                {feat.title.en} <span className="text-xs text-indigo-600 dark:text-indigo-400 block font-normal">{feat.title.km}</span>
+                {feat.title.en}
               </h3>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
                 {feat.desc.en}
@@ -278,7 +276,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
       <section className="space-y-4">
         <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
           <Briefcase className="w-5 h-5 text-indigo-500" />
-          <span>Practical Real-World Use Cases • ករណីប្រើប្រាស់ជាក់ស្ដែង</span>
+          <span>Practical Real-World Use Cases</span>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {editorial.useCases.map((uc, idx) => (
@@ -289,9 +287,6 @@ export default async function ToolPage({ params }: ToolPageProps) {
               <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">
                 {uc.title.en}
               </h3>
-              <span className="text-[11px] text-indigo-600 dark:text-indigo-400 block">
-                {uc.title.km}
-              </span>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed pt-1">
                 {uc.desc.en}
               </p>
@@ -307,7 +302,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
             <BookOpen className="w-5 h-5" />
           </div>
           <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100">
-            How to Use • របៀបប្រើប្រាស់
+            How to Use
           </h2>
         </div>
 
@@ -327,7 +322,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
         <div className="p-5 sm:p-6 rounded-2xl bg-linear-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 border border-indigo-200/60 dark:border-indigo-800/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-              In-Depth Documentation • អត្ថបទចំណេះដឹង
+              In-Depth Educational Guide
             </span>
             <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">
               {relatedGuide.title.en}
@@ -346,8 +341,13 @@ export default async function ToolPage({ params }: ToolPageProps) {
         </div>
       )}
 
-      {/* Extended FAQs Accordion */}
-      <FAQSection faqs={combinedFaqs} />
+      {/* Extended FAQs Accordion (Clean English) */}
+      <FAQSection
+        faqs={combinedFaqs.map((faq) => ({
+          question: faq.question.en,
+          answer: faq.answer.en,
+        }))}
+      />
 
       {/* Related Tools */}
       {relatedTools.length > 0 && (
@@ -367,7 +367,19 @@ export default async function ToolPage({ params }: ToolPageProps) {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {relatedTools.map((relTool) => (
-              <ToolCard key={relTool.id} tool={relTool} />
+              <ToolCard
+                key={relTool.id}
+                tool={{
+                  id: relTool.id,
+                  slug: relTool.slug,
+                  category: relTool.category,
+                  name: relTool.name.en,
+                  shortDescription: relTool.shortDescription.en,
+                  iconName: relTool.iconName,
+                  popular: relTool.popular,
+                  tags: relTool.tags,
+                }}
+              />
             ))}
           </div>
         </section>

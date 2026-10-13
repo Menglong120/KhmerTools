@@ -45,7 +45,7 @@ export default function GuidesIndexPage() {
       <div className="text-center max-w-3xl mx-auto space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/60 dark:border-indigo-800/60 text-indigo-700 dark:text-indigo-300 text-xs font-semibold">
           <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
-          <span>Educational Knowledge Base • មជ្ឈមណ្ឌលចំណេះដឹង</span>
+          <span>Educational Knowledge Base & Documentation</span>
         </div>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">
           Guides & Reference Documentation
@@ -78,9 +78,6 @@ export default function GuidesIndexPage() {
                   {guide.title.en}
                 </Link>
               </h2>
-              <span className="text-xs text-indigo-600 dark:text-indigo-400 block font-normal -mt-1">
-                {guide.title.km}
-              </span>
 
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed pt-1">
                 {guide.summary.en}
