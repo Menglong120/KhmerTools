@@ -1,13 +1,13 @@
 /**
  * Site configuration and canonical base URL helper.
- * Defaults to the live Vercel production URL: https://khmer-tools-self.vercel.app
+ * Defaults to the live custom domain URL: https://khmer-tool.sbs
  * Can be overridden via NEXT_PUBLIC_SITE_URL in production or when adding a custom domain.
  */
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ||
   (process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : 'https://khmer-tools-self.vercel.app');
+    : 'https://khmer-tool.sbs');
 
 export const SITE_NAME = 'KhmerTools 🇰🇭';
 export const SITE_TITLE = 'KhmerTools 🇰🇭 | Free, Fast & Private Online Tools for Cambodians & Developers';

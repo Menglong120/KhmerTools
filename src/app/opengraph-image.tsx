@@ -139,7 +139,7 @@ export default async function Image() {
           <span>•</span>
           <span>⚡ Zero Server Lag</span>
           <span>•</span>
-          <span>🌐 khmer-tools-self.vercel.app</span>
+          <span>🌐 khmer-tool.sbs</span>
         </div>
       </div>
     ),

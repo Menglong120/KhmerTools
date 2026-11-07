@@ -82,6 +82,9 @@ export const metadata: Metadata = {
   verification: {
     google: '5f029db7ec44286a',
   },
+  other: {
+    ...(ADSENSE_CLIENT_ID ? { 'google-adsense-account': ADSENSE_CLIENT_ID } : {}),
+  },
 };
 
 export default function RootLayout({
@@ -108,11 +111,14 @@ export default function RootLayout({
           rel="stylesheet"
         />
         {adClientId && (
-          <script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClientId}`}
-            crossOrigin="anonymous"
-          />
+          <>
+            <meta name="google-adsense-account" content={adClientId} />
+            <script
+              async
+              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClientId}`}
+              crossOrigin="anonymous"
+            />
+          </>
         )}
         {GA_ID && (
           <>

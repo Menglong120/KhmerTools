@@ -1,12 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { useApp } from '@/context/AppContext';
 import { TOOLS, CATEGORIES, ToolCategory } from '@/lib/tools-registry';
 import { GUIDES } from '@/lib/guides-data';
 import { SITE_URL } from '@/lib/site-config';
-import { ToolCard } from '@/components/common/ToolCard';
 import { ToolIcon } from '@/components/common/ToolIcon';
 import { AdSlot } from '@/components/layout/AdSlot';
 import {
@@ -15,21 +14,13 @@ import {
   Zap,
   ShieldCheck,
   Globe2,
-  Flame,
   BookOpen,
   ArrowRight,
+  Wrench,
 } from 'lucide-react';
 
 export function HomePageClient() {
   const { locale, setIsSearchOpen, t } = useApp();
-  const [selectedFilter, setSelectedFilter] = useState<'all' | ToolCategory>('all');
-
-  const popularTools = TOOLS.filter((tool) => tool.popular);
-
-  const filteredTools =
-    selectedFilter === 'all'
-      ? TOOLS
-      : TOOLS.filter((tool) => tool.category === selectedFilter);
 
   const homeJsonLd = {
     '@context': 'https://schema.org',
@@ -137,8 +128,8 @@ export function HomePageClient() {
         </div>
       </section>
 
-      {/* Featured Spotlight: Color Converter & QR Code Generator */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Main Tools: QR Code Generator & Color Converter */}
+      <section id="main-tools" className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* QR Code Generator Spotlight Card */}
         <Link
           href="/tools/qr-code-generator"
@@ -148,7 +139,7 @@ export function HomePageClient() {
             <div className="flex items-center justify-between gap-2 mb-4">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold">
                 <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
-                <span>{locale === 'km' ? 'ឧបករណ៍ពេញនិយម' : 'Popular Utility'}</span>
+                <span>{locale === 'km' ? 'ឧបករណ៍ចម្បង' : 'Main Tool'}</span>
               </span>
               <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 group-hover:translate-x-1 transition-transform">
                 {locale === 'km' ? 'បើកប្រើប្រាស់ →' : 'Open Tool →'}
@@ -189,7 +180,7 @@ export function HomePageClient() {
             <div className="flex items-center justify-between gap-2 mb-4">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold">
                 <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
-                <span>{locale === 'km' ? 'ឧបករណ៍ពេញនិយម' : 'Popular Utility'}</span>
+                <span>{locale === 'km' ? 'ឧបករណ៍ចម្បង' : 'Main Tool'}</span>
               </span>
               <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 group-hover:translate-x-1 transition-transform">
                 {locale === 'km' ? 'បើកប្រើប្រាស់ →' : 'Open Tool →'}
@@ -270,75 +261,49 @@ export function HomePageClient() {
         </div>
       </section>
 
-      {/* Popular Tools Section */}
-      <section id="popular" className="space-y-6">
-        <div className="flex items-center gap-2">
-          <div className="p-2 rounded-lg bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400">
-            <Flame className="w-5 h-5 animate-pulse" />
-          </div>
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
-              {t.popularTools}
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-              {locale === 'km' ? 'ឧបករណ៍ដែលត្រូវបានប្រើប្រាស់ច្រើនបំផុត' : 'Most frequently used utilities by the community'}
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {popularTools.slice(0, 6).map((tool) => (
-            <ToolCard key={tool.id} tool={tool} />
-          ))}
-        </div>
-      </section>
-
-      {/* All Tools with Filter Tabs */}
-      <section className="space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
-              {t.allTools}
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-              {locale === 'km' ? 'រុករកឧបករណ៍ទាំងអស់' : 'Explore every utility available on KhmerTools'}
+      {/* All Tools Directory Notice Banner */}
+      <section className="relative overflow-hidden rounded-3xl bg-linear-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-8 sm:p-10 shadow-xl border border-indigo-500/20">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="space-y-3 max-w-xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-semibold">
+              <Wrench className="w-3.5 h-3.5 text-indigo-400" />
+              <span>
+                {locale === 'km'
+                  ? 'ឧបករណ៍ទាំងអស់ ១៨ នៅក្នុង Topbar'
+                  : 'All 18 Utilities Accessible in Topbar'}
+              </span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+              {locale === 'km'
+                ? 'ត្រូវការឧបករណ៍ផ្សេងទៀតមែនទេ?'
+                : 'Looking for another utility?'}
+            </h3>
+            <p className="text-sm text-slate-300 leading-relaxed">
+              {locale === 'km'
+                ? 'ចូលប្រើប្រាស់ឧបករណ៍ទាំង ១៨ ប្រភេទភ្លាមៗ តាមរយៈម៉ឺនុយ "ឧបករណ៍" នៅលើ Topbar ខាងលើ ឬចុចស្វែងរក (Ctrl+K) ដោយមិនបាច់រង់ចាំ។ ដំណើរការលើ Browser និងមិនកត់ត្រាទិន្នន័យ។'
+                : 'Every tool is one click away via the "Tools" dropdown in the topbar or via instant search (Ctrl+K). 100% free, private, and client-side.'}
             </p>
           </div>
 
-          {/* Filter Pills */}
-          <div className="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 flex-wrap">
+          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
             <button
               type="button"
-              onClick={() => setSelectedFilter('all')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                selectedFilter === 'all'
-                  ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-2xs'
-                  : 'text-slate-600 dark:text-slate-400'
-              }`}
+              onClick={() => setIsSearchOpen(true)}
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white text-slate-900 hover:bg-slate-100 font-bold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer"
             >
-              {t.allTools} ({TOOLS.length})
+              <Search className="w-4 h-4 text-indigo-600" />
+              <span>{locale === 'km' ? 'ស្វែងរកឧបករណ៍ (Ctrl+K)' : 'Search All Tools (Ctrl+K)'}</span>
             </button>
-            {(['khmer', 'calculator', 'developer'] as ToolCategory[]).map((catKey) => (
-              <button
-                key={catKey}
-                type="button"
-                onClick={() => setSelectedFilter(catKey)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                  selectedFilter === catKey
-                    ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-2xs'
-                    : 'text-slate-600 dark:text-slate-400'
-                }`}
-              >
-                {CATEGORIES[catKey].name[locale]}
-              </button>
-            ))}
-          </div>
-        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filteredTools.map((tool) => (
-            <ToolCard key={tool.id} tool={tool} />
-          ))}
+            <Link
+              href="/#categories"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-sm transition-all"
+            >
+              <span>{t.categories}</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
