@@ -3,6 +3,9 @@ import { TOOLS, CATEGORIES, ToolCategory } from '@/lib/tools-registry';
 import { GUIDES } from '@/lib/guides-data';
 import { SITE_URL } from '@/lib/site-config';
 
+export const dynamic = 'force-static';
+export const revalidate = 86400;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
   // Use a stable release timestamp for search engine indexers

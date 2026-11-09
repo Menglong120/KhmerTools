@@ -4,10 +4,7 @@
  * Can be overridden via NEXT_PUBLIC_SITE_URL in production or when adding a custom domain.
  */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : 'https://khmer-tool.sbs');
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://khmer-tool.sbs';
 
 export const SITE_NAME = 'KhmerTools 🇰🇭';
 export const SITE_TITLE = 'KhmerTools 🇰🇭 | Free, Fast & Private Online Tools for Cambodians & Developers';
